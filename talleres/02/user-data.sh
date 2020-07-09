@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 
-cd /home/e2-user
+cd /home/ec2-user
 
 sudo yum install -y python37
 curl -O https://bootstrap.pypa.io/get-pip.py
