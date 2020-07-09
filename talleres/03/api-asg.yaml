@@ -16,13 +16,25 @@ Resources:
     Properties:
       GroupName: MythicalMysfitsLB
       GroupDescription: Load Balancer
-      # Ingress rules
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 80
+          ToPort: 80
+          IpProtocol: tcp
   InstanceSG:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: MythicalMysfitsInstance
       GroupDescription: Instances
-      # Ingress rules
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 22
+          ToPort: 22
+          IpProtocol: tcp
+        - SourceSecurityGroupId: !GetAtt LoadBalancerSG.GroupId
+          FromPort: 8000
+          ToPort: 8000
+          IpProtocol: tcp
   LoadBalancer:
     Type: AWS::ElasticLoadBalancing::LoadBalancer
     Properties:
