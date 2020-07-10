@@ -11,6 +11,7 @@ Mappings:
       "AmiId": "ami-0e34e7b9ca0ace12d"
 
 Resources:
+
   LoadBalancerSG:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -21,6 +22,7 @@ Resources:
           FromPort: 80
           ToPort: 80
           IpProtocol: tcp
+          
   InstanceSG:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -35,6 +37,7 @@ Resources:
           FromPort: 8000
           ToPort: 8000
           IpProtocol: tcp
+          
   LoadBalancer:
     Type: AWS::ElasticLoadBalancing::LoadBalancer
     Properties:
@@ -42,8 +45,18 @@ Resources:
       SecurityGroups:
         - !GetAtt LoadBalancerSG.GroupId
       AvailabilityZones: !GetAZs
-      # Listeners
-      # HealthCheck
+      Listeners:
+      - InstancePort: 8000
+        InstanceProtocol: TCP
+        LoadBalancerPort: 80
+        Protocol: TCP
+      HealthCheck:
+        HealthyThreshold: 2
+        Interval: 30
+        Target: "TCP:8000"
+        Timeout: 5
+        UnhealthyThreshold: 5
+
   LaunchConfiguration:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
@@ -56,4 +69,5 @@ Resources:
       SecurityGroups:
         - !GetAtt InstanceSG.GroupId
       # UserData
+      
   # AutoScalingGroup:
