@@ -118,7 +118,7 @@ Resources:
         - !GetAtt InstanceSG.GroupId
       IamInstanceProfile: !Ref InstanceProfile
       UserData:
-        IyEvYmluL2Jhc2ggLXhlCnl1bSB1cGRhdGUgLXkKeXVtIGluc3RhbGwgLXkgcnVieSB3Z2V0CmNkIC9ob21lL2VjMi11c2VyCndnZXQgaHR0cHM6Ly9hd3MtY29kZWRlcGxveS0ke0FXUzo6UmVnaW9ufS5zMy4ke0FXUzo6UmVnaW9ufS5hbWF6b25hd3MuY29tL2xhdGVzdC9pbnN0YWxsCmNobW9kICt4IC4vaW5zdGFsbAouL2luc3RhbGwgYXV0bwpzZXJ2aWNlIGNvZGVkZXBsb3ktYWdlbnQgc3RhcnQKc2VydmljZSBjb2RlZGVwbG95LWFnZW50IHN0YXR1cw==
+        IyEvYmluL2Jhc2ggLXhlCnl1bSB1cGRhdGUgLXkKeXVtIGluc3RhbGwgLXkgcnVieSB3Z2V0CmNkIC9ob21lL2VjMi11c2VyCndnZXQgaHR0cHM6Ly9hd3MtY29kZWRlcGxveS11cy1lYXN0LTEuczMudXMtZWFzdC0xLmFtYXpvbmF3cy5jb20vbGF0ZXN0L2luc3RhbGwKY2htb2QgK3ggLi9pbnN0YWxsCi4vaW5zdGFsbCBhdXRvCnNlcnZpY2UgY29kZWRlcGxveS1hZ2VudCBzdGFydApzZXJ2aWNlIGNvZGVkZXBsb3ktYWdlbnQgc3RhdHVz
   AutoScalingGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
