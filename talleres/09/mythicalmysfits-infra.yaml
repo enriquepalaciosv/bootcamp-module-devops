@@ -118,16 +118,7 @@ Resources:
         - !GetAtt InstanceSG.GroupId
       IamInstanceProfile: !Ref InstanceProfile
       UserData:
-        Fn::Base64: !Sub |
-          #!/bin/bash -xe
-          yum update -y
-          yum install -y ruby wget
-          cd /home/ec2-user
-          wget https://aws-codedeploy-${AWS::Region}.s3.${AWS::Region}.amazonaws.com/latest/install
-          chmod +x ./install
-          ./install auto
-          service codedeploy-agent start
-          service codedeploy-agent status
+        IyEvYmluL2Jhc2ggLXhlCnl1bSB1cGRhdGUgLXkKeXVtIGluc3RhbGwgLXkgcnVieSB3Z2V0CmNkIC9ob21lL2VjMi11c2VyCndnZXQgaHR0cHM6Ly9hd3MtY29kZWRlcGxveS0ke0FXUzo6UmVnaW9ufS5zMy4ke0FXUzo6UmVnaW9ufS5hbWF6b25hd3MuY29tL2xhdGVzdC9pbnN0YWxsCmNobW9kICt4IC4vaW5zdGFsbAouL2luc3RhbGwgYXV0bwpzZXJ2aWNlIGNvZGVkZXBsb3ktYWdlbnQgc3RhcnQKc2VydmljZSBjb2RlZGVwbG95LWFnZW50IHN0YXR1cw==
   AutoScalingGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
